@@ -1,13 +1,16 @@
 @font-face{font-family:'iconitos';src:url("../fonts/icomoon.eot");src:url("../fonts/icomoon.eot?#iefix") format('embedded-opentype'),url("../fonts/icomoon.woff") format('woff'),url("../fonts/icomoon.ttf") format('truetype'),url("../fonts/icomoon.svg#icomoon") format('svg');font-weight:normal;font-style:normal}
 a{color:#dd4f24}
-body{background:#e8e8e8;color:#444;font-family:Arial;font-size:16px}
+body{background:#e8e8e8;color:#444;font-family:Arial;font-size:16px;transition:font-size 1s}
 footer{background:#dd4f24;color:rgba(255,255,255,0.5);padding:1em 0;text-align:center;width:100%;}
 footer h3{font-size:14px;font-weight:normal;}
 footer h3 strong{display:block}
 footer h3 .mejor:before,footer h3 .mejor:after{content:" - "}
+form{display:none;padding:.8em;}
+form label{display:inline-block;width:60px}
 header{background:#444;box-shadow:0 5px 0 rgba(0,0,0,0.2);color:#fff;overflow:hidden;padding:.5em;position:relative;z-index:2;}
 header .logo{border-right:1px solid #22bce0;float:left;width:60px;}
 header .logo img{width:52px}
+header .sizer{text-decoration:none}
 header .titular{margin:0 80px 0 70px;}
 header .titular .titulo{font-size:18px;font-weight:normal;margin:0;padding:0}
 header .titular .filtro{color:#22bce0;font-size:14px;font-style:italic;font-weight:bold;text-decoration:none}
@@ -44,7 +47,7 @@ nav .menu li a:hover{background:rgba(0,0,0,0.1)}
 .posts .post .descripcion .detalles .autor{margin:.5em 0 2em 0}
 .posts .post .descripcion .detalles .fecha{float:right;margin:0 1em 0 0}
 .posts .post .descripcion .detalles .tag{background:#22bce0;border-radius:.5em;color:#fff;padding:.2em .5em;text-decoration:none}
-.posts .post .descripcion .detalles .titulo{color:#444;font-size:18px;font-style:italic;margin:0;padding:.5em .5em 0 0}
+.posts .post .descripcion .detalles .titulo{color:#444;font-size:1.1em;font-style:italic;margin:0;padding:.5em .5em 0 0}
 .posts .post .descripcion .imagen{float:left;}
 .posts .post .descripcion .imagen img{height:160px;vertical-align:top;width:120px}
 @media screen and (min-width: 768px){header .titular .publicar{font-size:1.1em;padding-left:3em;position:relative;}

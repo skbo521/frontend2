@@ -7,6 +7,7 @@
 	<title>Puls4: Comunidad</title>
 	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="css/puls4.css" />
+	<script src="js/jquery-2.0.3.min.js"></script>
 </head>
 <body>
 	<header>
@@ -15,15 +16,22 @@
 		</div>
 		<div class="titular">
 			<h1 class="titulo">
-				Puls4: Comunidad profesional
+				Puls4: Comunidad profesional de gente atractiva
 			</h1>
-			<a class="filtro" href="#">
-				Stylus
-			</a>
-			<a class="publicar" href="#">
-				Publicar
-			</a>
-		</div>
+			<div>
+				<a class="filtro" href="#">
+					Stylus
+				</a>
+				<a class="publicar" href="#">
+					Publicar
+				</a>
+			</div>
+			<div>
+				<a href="#12" class="sizer">A</a>
+				<a href="#16" class="sizer">A</a>
+				<a href="#22" class="sizer">A</a>
+			</div>
+		</div>		
 		<div class="usuario">
 			<figure class="avatar">
 				<img src="imagenes/avatar.jpg" alt="freddier" />
@@ -45,6 +53,21 @@
 			<li><a href="#">Django</a></li>
 		</ul>
 	</nav>
+	<form action="">
+		<p>
+			<label for="titulo">Titulo</label>
+			<input placeholder="Ingrese el titulo" id="titulo" type="text" name="titulo">
+		</p>
+		<p>
+			<label for="autor">Autor</label>
+			<input placeholder="Ingrese el autor" id="autor" type="text" name="autor">
+		</p>
+		<p>
+			<label for="tag">Tag</label>
+			<input placeholder="Ingrese el tag" id="tag" type="text" name="tag">
+			<input type="submit" value="Publicar"> 
+		</p>
+	</form>
 	<section class="posts">
 		<article class="post">
 			<div class="descripcion">
@@ -52,7 +75,7 @@
 					<img src="imagenes/foto.jpg" />
 				</figure>
 				<div class="detalles">
-					<h2 class="titulo">4 tendencias web para el 2014 y 4 que ya deberías dominar</h2>
+					<h2 class="titulo">4 tendencias web para el 2014</h2>
 					<p class="autor">
 						por <a href="#">Freddier</a>
 					</p>
@@ -63,7 +86,7 @@
 			<div class="acciones">
 				<div class="votos">
 					<a class="up" href="#"></a>
-					<span class="total">40</span>
+					<span class="total">10</span>
 					<a class="down" href="#"></a>
 				</div>
 				<div class="datos">
@@ -89,7 +112,7 @@
 			<div class="acciones">
 				<div class="votos">
 					<a class="up" href="#"></a>
-					<span class="total">40</span>
+					<span class="total">20</span>
 					<a class="down" href="#"></a>
 				</div>
 				<div class="datos">
@@ -104,7 +127,7 @@
 					<img src="imagenes/foto.jpg" />
 				</figure>
 				<div class="detalles">
-					<h2 class="titulo">4 tendencias web para el 2014 y 4 que ya deberías dominar</h2>
+					<h2 class="titulo">4 tendencias web para el 2014 y 4 que ya deberías dominar para ser un frontend profesional</h2>
 					<p class="autor">
 						por <a href="#">Freddier</a>
 					</p>
@@ -115,7 +138,7 @@
 			<div class="acciones">
 				<div class="votos">
 					<a class="up" href="#"></a>
-					<span class="total">40</span>
+					<span class="total">30</span>
 					<a class="down" href="#"></a>
 				</div>
 				<div class="datos">
@@ -237,5 +260,97 @@
 			</span>
 		</h3>
 	</footer>
+	<script type="text/javascript">
+		$(function(){
+			$('.publicar').on('click', mostrarFormulario);
+
+			function mostrarFormulario() {
+				$('form').slideToggle();
+			}
+
+			$('form').on('submit', procesarFormulario);
+
+			function procesarFormulario(ev) {
+				ev.preventDefault();
+				var titulo = $('input[name=titulo]').val();
+				var autor = $('input[name=autor]').val();
+				var tag = $('input[name=tag]').val();
+
+				var template = '<article class="post"> \
+					<div class="descripcion"> \
+						<figure class="imagen"> \
+							<img src="imagenes/foto.jpg" /> \
+						</figure> \
+						<div class="detalles"> \
+							<h2 class="titulo"> \
+								'+titulo+'</h2> \
+							<p class="autor"> \
+								por <a href="#">'+autor+'</a> \
+							</p> \
+							<a class="tag">'+tag+'</a> \
+							<p class="fecha">hace <strong>0</strong> min</p> \
+						</div> \
+					</div> \
+					<div class="acciones"> \
+						<div class="votos"> \
+							<a class="up" href="#"></a> \
+							<span class="total">0</span> \
+							<a class="down" href="#"></a> \
+						</div> \
+						<div class="datos"> \
+							<a class="comentarios" href="#">0</a> \
+							<a class="estrellita" href="#"></a> \
+						</div> \
+					</div> \
+				</article>';
+
+				$('.posts').prepend($(template).fadeIn(function(){
+					$(this).css('display', 'inline-block')
+				}));
+				$('input[type=text]').val('');
+				$('form').slideUp();
+			}
+
+			function crearSizer(pixels) {
+				return function() {
+					$('body').css('font-size', pixels+'px')
+				}
+			}
+
+			$('.sizer').each(function(i, link){
+				var pixels = $(link).prop('hash').substring(1);
+				$(link)
+					.css('font-size', pixels+'px')
+					.on('click', crearSizer(pixels));
+			});
+
+			function crearContador(valorInicial) {
+				var contador = valorInicial || 0;
+				return {
+					up : function() {
+						return ++contador;
+					},
+					down : function() {
+						return --contador;
+					}
+				}
+			}
+
+			$('.total').each(function(i, elem) {
+				var contTotal = crearContador(elem.innerHTML);
+				$(elem)
+					.siblings('.up')
+						.on('click', function(ev){
+							ev.preventDefault();
+							$(elem).html(contTotal.up());
+						})
+					.siblings('.down')
+						.on('click', function(ev){
+							ev.preventDefault();
+							$(elem).html(contTotal.down());
+						});
+			});
+		});
+	</script>
 </body>
 </html>

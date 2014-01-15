@@ -22,6 +22,7 @@ body
 	color gris_oscuro
 	font-family Arial
 	font-size 16px
+	transition font-size 1s
 
 footer
 	background naranja
@@ -42,6 +43,14 @@ footer
 			&:after
 				content " - "
 
+form
+	display none
+	padding 0.8em
+
+	label
+		display inline-block
+		width 60px
+
 header
 	background gris_oscuro
 	box-shadow 0 5px 0 rgba(0,0,0,0.2)
@@ -58,6 +67,9 @@ header
 
 		img
 			width 52px
+
+	.sizer
+		text-decoration none
 
 	.titular
 		margin 0 80px 0 70px
@@ -251,7 +263,7 @@ nav
 
 				.titulo
 					color gris_oscuro
-					font-size 18px
+					font-size 1.1em
 					font-style italic
 					margin 0
 					padding 0.5em 0.5em 0 0
